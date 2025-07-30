@@ -1832,6 +1832,7 @@ body.torch-active {
 
 .loader-letter {
   display: inline-block;
+    font-family: 'Space Grotesk', sans-serif;
   opacity: 0;
   animation: loader-letter-anim 4s infinite linear;
   z-index: 2;
