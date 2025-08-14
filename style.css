@@ -1586,6 +1586,21 @@ span {
         font-size: 1.6rem;
         margin: 0.5rem; 
     }
+    
+    /* ENSURE PROGRESS BAR ANIMATIONS ARE COMPLETELY DISABLED ON SMALL MOBILE */
+    .skills-content .progress .bar span {
+        animation: none !important;
+        transition: width 0.8s ease-out !important;
+    }
+    
+    .skills-content .progress .bar span::before,
+    .skills-content .progress .bar span::after {
+        display: none !important;
+    }
+    
+    .skills-content .progress .bar {
+        animation: none !important;
+    }
 }
 
 @media (max-width: 371px) {
@@ -2436,6 +2451,51 @@ body.torch-active {
         transform: translateY(0px) !important;
         transition: all 0.1s ease !important;
     }
+    
+    /* DISABLE PROGRESS BAR ANIMATIONS ON MOBILE FOR BETTER PERFORMANCE */
+    .skills-content .progress .bar span {
+        /* Remove all animations and shimmer effects */
+        animation: none !important;
+        transition: width 1s ease-out !important;
+        
+        /* Remove shimmer pseudo-elements */
+        position: relative;
+        overflow: visible;
+    }
+    
+    /* Remove shimmer effects */
+    .skills-content .progress .bar span::before,
+    .skills-content .progress .bar span::after {
+        display: none !important;
+    }
+    
+    /* Remove pulsing glow animation */
+    .skills-content .progress .bar span {
+        animation: none !important;
+        box-shadow: 
+            0 0 10px rgba(0, 171, 240, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Remove container glow animation */
+    .skills-content .progress .bar {
+        animation: none !important;
+        box-shadow: 
+            0 0 15px rgba(0, 171, 240, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+    
+    /* Remove transition delays for immediate loading */
+    .skills-column:nth-child(1) .skills-content .progress:nth-child(1) .bar span,
+    .skills-column:nth-child(1) .skills-content .progress:nth-child(2) .bar span,
+    .skills-column:nth-child(1) .skills-content .progress:nth-child(3) .bar span,
+    .skills-column:nth-child(1) .skills-content .progress:nth-child(4) .bar span,
+    .skills-column:nth-child(2) .skills-content .progress:nth-child(1) .bar span,
+    .skills-column:nth-child(2) .skills-content .progress:nth-child(2) .bar span,
+    .skills-column:nth-child(2) .skills-content .progress:nth-child(3) .bar span,
+    .skills-column:nth-child(2) .skills-content .progress:nth-child(4) .bar span {
+        transition-delay: 0s !important;
+    }
 }
 
 /* Touch device specific fixes */
@@ -2465,6 +2525,33 @@ body.torch-active {
             inset 0 2px 4px rgba(0, 0, 0, 0.2) !important;
         filter: drop-shadow(0 0 4px rgba(0, 171, 240, 0.3)) !important;
         transition: all 0.1s ease !important;
+    }
+    
+    /* DISABLE ALL PROGRESS BAR ANIMATIONS ON TOUCH DEVICES */
+    .skills-content .progress .bar span {
+        animation: none !important;
+        transition: width 0.6s ease-out !important;
+    }
+    
+    .skills-content .progress .bar span::before,
+    .skills-content .progress .bar span::after {
+        display: none !important;
+    }
+    
+    .skills-content .progress .bar {
+        animation: none !important;
+    }
+    
+    /* Remove all transition delays */
+    .skills-column:nth-child(1) .skills-content .progress:nth-child(1) .bar span,
+    .skills-column:nth-child(1) .skills-content .progress:nth-child(2) .bar span,
+    .skills-column:nth-child(1) .skills-content .progress:nth-child(3) .bar span,
+    .skills-column:nth-child(1) .skills-content .progress:nth-child(4) .bar span,
+    .skills-column:nth-child(2) .skills-content .progress:nth-child(1) .bar span,
+    .skills-column:nth-child(2) .skills-content .progress:nth-child(2) .bar span,
+    .skills-column:nth-child(2) .skills-content .progress:nth-child(3) .bar span,
+    .skills-column:nth-child(2) .skills-content .progress:nth-child(4) .bar span {
+        transition-delay: 0s !important;
     }
 }
 
