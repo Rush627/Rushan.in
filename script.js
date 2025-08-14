@@ -427,4 +427,40 @@ if (torchMessageBox && torchMessage) {
         
       }
     }
+
+    // Progress Bar Animation
+    function animateProgressBars() {
+        const progressBars = document.querySelectorAll('.skills-content .progress .bar span');
+        
+        progressBars.forEach(bar => {
+            // Add the animate class to trigger the CSS animation
+            bar.classList.add('animate');
+        });
+    }
+
+    // Intersection Observer for Skills Section
+    function setupSkillsAnimation() {
+        const skillsSection = document.querySelector('.skills');
+        
+        if (skillsSection) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Start the progress bar animation when skills section is visible
+                        animateProgressBars();
+                        // Unobserve after animation is triggered
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.3, // Trigger when 30% of the section is visible
+                rootMargin: '0px 0px -100px 0px'
+            });
+            
+            observer.observe(skillsSection);
+        }
+    }
+
+    // Initialize skills animation when DOM is loaded
+    setupSkillsAnimation();
 });
