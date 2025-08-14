@@ -582,6 +582,8 @@ span {
     border-left: .2rem solid var(--main-color);
 }
 
+
+
 .education-box .education-content::before {
     content: '';
     position: absolute;
@@ -592,6 +594,8 @@ span {
     background: var(--main-color);
     border-radius: 50%;
 }
+
+
 
 .education-content .content {
     position: relative;
@@ -708,6 +712,18 @@ span {
     border: .2rem solid var(--main-color);
     padding: .5rem;
     margin: 1rem 0;
+    
+    /* Add subtle glow to the bar container */
+    box-shadow: 
+        0 0 15px rgba(0, 171, 240, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    
+    /* Background gradient for the empty part of the bar */
+    background: linear-gradient(
+        90deg,
+        rgba(0, 171, 240, 0.1) 0%,
+        rgba(0, 171, 240, 0.05) 100%
+    );
 }
 
 .skills-content .progress .bar span {
@@ -715,38 +731,227 @@ span {
     height: 100%;
     border-radius: .3rem;
     background: var(--main-color);
+    
+    /* Initial state - start at 0% width */
+    width: 0% !important;
+    
+    /* Animation properties */
+    transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Add a subtle glow effect to the progress bar */
+    box-shadow: 
+        0 0 10px rgba(0, 171, 240, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
+/* Animated progress bars - these will be triggered by JavaScript */
+
+.skills-column:nth-child(1) .skills-content .progress:nth-child(1) .bar span.animate {
+    width: 95% !important;
+}
+
+.skills-column:nth-child(1) .skills-content .progress:nth-child(2) .bar span.animate {
+    width: 80% !important;
+}
+
+.skills-column:nth-child(1) .skills-content .progress:nth-child(3) .bar span.animate {
+    width: 60% !important;
+}
+
+.skills-column:nth-child(1) .skills-content .progress:nth-child(4) .bar span.animate {
+    width: 75% !important;
+}
+
+.skills-column:nth-child(2) .skills-content .progress:nth-child(1) .bar span.animate {
+    width: 90% !important;
+}
+
+.skills-column:nth-child(2) .skills-content .progress:nth-child(2) .bar span.animate {
+    width: 67% !important;
+}
+
+.skills-column:nth-child(2) .skills-content .progress:nth-child(3) .bar span.animate {
+    width: 85% !important;
+}
+
+.skills-column:nth-child(2) .skills-content .progress:nth-child(4) .bar span.animate {
+    width: 60% !important;
+}
+
+.skills-content .progress .bar span {
+    background: linear-gradient(
+        90deg,
+        var(--main-color) 0%,
+        rgba(0, 171, 240, 0.8) 50%,
+        var(--main-color) 100%
+    );
+    
+    /* Add a subtle shimmer effect */
+    position: relative;
+    overflow: hidden;
+    
+    /* Enhanced glow effect */
+    box-shadow: 
+        0 0 10px rgba(0, 171, 240, 0.3),
+        0 0 20px rgba(0, 171, 240, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    
+    /* Pulsing glow animation */
+    animation: progressGlow 2s ease-in-out infinite;
+}
+
+@keyframes progressGlow {
+    0%, 100% {
+        box-shadow: 
+            0 0 10px rgba(0, 171, 240, 0.3),
+            0 0 20px rgba(0, 171, 240, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    50% {
+        box-shadow: 
+            0 0 15px rgba(0, 171, 240, 0.5),
+            0 0 30px rgba(0, 171, 240, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* Enhanced progress bar container */
+.skills-content .progress .bar {
+    height: 2.5rem;
+    border-radius: .6rem;
+    border: .2rem solid var(--main-color);
+    padding: .5rem;
+    margin: 1rem 0;
+    
+    /* Enhanced glow to the bar container */
+    box-shadow: 
+        0 0 15px rgba(0, 171, 240, 0.1),
+        0 0 25px rgba(0, 171, 240, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    
+    /* Better background gradient for the empty part of the bar */
+    background: linear-gradient(
+        90deg,
+        rgba(0, 171, 240, 0.15) 0%,
+        rgba(0, 171, 240, 0.08) 50%,
+        rgba(0, 171, 240, 0.15) 100%
+    );
+    
+    /* Subtle animation for the container */
+    animation: containerGlow 3s ease-in-out infinite;
+}
+
+@keyframes containerGlow {
+    0%, 100% {
+        box-shadow: 
+            0 0 15px rgba(0, 171, 240, 0.1),
+            0 0 25px rgba(0, 171, 240, 0.05),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+    50% {
+        box-shadow: 
+            0 0 20px rgba(0, 171, 240, 0.15),
+            0 0 35px rgba(0, 171, 240, 0.08),
+            inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+}
+
+.skills-content .progress .bar span::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.6) 20%,
+        rgba(255, 255, 255, 0.9) 50%,
+        rgba(255, 255, 255, 0.6) 80%,
+        transparent 100%
+    );
+    animation: shimmer 2.5s ease-in-out infinite;
+    border-radius: .3rem;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+/* Alternative shimmer effect with better visibility */
+.skills-content .progress .bar span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        transparent 100%
+    );
+    animation: shimmer2 3s ease-in-out infinite;
+    border-radius: .3rem;
+}
+
+@keyframes shimmer2 {
+    0% {
+        left: -50%;
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+/* Staggered animation delays for each progress bar */
 .skills-column:nth-child(1) .skills-content .progress:nth-child(1) .bar span {
-    width: 95%;
+    transition-delay: 0.1s;
 }
-
 .skills-column:nth-child(1) .skills-content .progress:nth-child(2) .bar span {
-    width: 80%;
+    transition-delay: 0.2s;
 }
-
 .skills-column:nth-child(1) .skills-content .progress:nth-child(3) .bar span {
-    width: 60%;
+    transition-delay: 0.3s;
 }
-
 .skills-column:nth-child(1) .skills-content .progress:nth-child(4) .bar span {
-    width: 75%;
+    transition-delay: 0.4s;
 }
 
 .skills-column:nth-child(2) .skills-content .progress:nth-child(1) .bar span {
-    width: 90%;
+    transition-delay: 0.5s;
 }
-
 .skills-column:nth-child(2) .skills-content .progress:nth-child(2) .bar span {
-    width: 67%;
+    transition-delay: 0.6s;
 }
-
 .skills-column:nth-child(2) .skills-content .progress:nth-child(3) .bar span {
-    width: 85%;
+    transition-delay: 0.7s;
 }
-
 .skills-column:nth-child(2) .skills-content .progress:nth-child(4) .bar span {
-    width: 60%;
+    transition-delay: 0.8s;
 }
 
 .contact {
@@ -1298,6 +1503,13 @@ span {
     .contact form .textarea-field {
         margin: 3rem 0 2rem; 
     }
+    
+    /* Make contact form fields smaller on mobile */
+    .contact form .input-box .input-field input,
+    .contact form .textarea-field textarea {
+        padding: 1rem;
+        font-size: 1.4rem;
+    }
 
 
     /* --- FOOTER OPTIMIZATION (Mobile) --- */
@@ -1327,7 +1539,7 @@ span {
         border-radius: .4rem; 
     }
     .footer-iconTop a i {
-        color: var(--text-color); 
+        color: var(--bg-color); 
     }
     .logo, .logo span {
         font-family: 'Space Grotesk', sans-serif !important;
